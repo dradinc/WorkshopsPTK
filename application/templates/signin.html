@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <style>
+        html {
+            display: grid;
+            height: 100%;
+        }
+        body {
+            display: grid;
+            background-color: #D3D3D3;
+            height: 100%;
+        }
+        main {
+            display: grid;
+            height: 100%;
+            align-content: center;
+            justify-content: center;
+        }
+        input, button {
+            max-width: 250px;
+        }
+    </style>
+</head>
+<body class="text-center">
+<section class="container">
+    <main class="form-signin">
+        <form method="POST">
+            <img class="mb-1" src="{{ url_for('static', filename='image/icon.png') }}" width="90" height="90">
+            <h2 class="mb-4">Авторизация</h2>
+            <input name="login" type="text" class="form-control mb-2" placeholder="Логин или E-mail" value="{{ login }}">
+            <input name="password" type="password" class="form-control mb-2" placeholder="Пароль">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <article class="alert alert-danger mb-2" role="alert">{{ messages[0] }}</article>
+                {% endif %}
+            {% endwith %}
+            <button class="w-100 btn btn-lg btn-primary">Вход</button>
+            <p class="mt-5 mb-3 text-muted">Великий Новгород © 2021</p>
+        </form>
+    </main>
+</section>
+</body>
+</html>
